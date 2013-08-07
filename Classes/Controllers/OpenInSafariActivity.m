@@ -28,19 +28,23 @@
     return [UIImage imageNamed:@"openinsafari.png"];
 }
 
-- (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
+- (BOOL)canPerformWithActivityItems:(NSArray *)arr {
     return YES;
 }
 
 - (void)prepareWithActivityItems:(NSArray *)activityItems {
     [url release];
-    
-    url = [[activityItems lastObject] copy];
+	for (id activityItem in activityItems) {
+		if ([activityItem isKindOfClass:[NSURL class]]) {
+			url = [NSURL URLWithString:[activityItem absoluteString]];
+            return;
+		}
+	}
 }
 
 - (void)performActivity {
-    [[UIApplication sharedApplication] openURL:url];
-    [self activityDidFinish:YES];
+    BOOL completed = [[UIApplication sharedApplication] openURL:url];
+    [self activityDidFinish:completed];
 }
 
 @end
