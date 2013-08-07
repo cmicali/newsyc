@@ -28,6 +28,7 @@
 
 #import "UIApplication+ActivityIndicator.h"
 #import "UINavigationItem+MultipleItems.h"
+#import "UIColor+Orange.h"
 
 @implementation UINavigationController (AppDelegate)
 
@@ -109,6 +110,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
+    [UITabBar appearance].selectedImageTintColor = [UIColor mainOrangeColor];
+    
     [HNNetworkActivityController setNetworkActivityBeganBlock:^{
         [[UIApplication sharedApplication] retainNetworkActivityIndicator];
     }];

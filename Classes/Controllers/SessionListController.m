@@ -36,6 +36,8 @@
     [tableView setRowHeight:64.0f];
     [[self view] addSubview:tableView];
 
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:1 green:0.4 blue:0 alpha:1];
+    
     addBarButtonItem = [[BarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSessionFromBarButtonItem:)];
     editBarButtonItem = [[BarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editFromBarButtonItem:)];
     doneBarButtonItem = [[BarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneFromBarButtonItem:)];
